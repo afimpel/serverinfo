@@ -92,7 +92,3 @@ do
         echo "| ${dmi_str} ^        ${line} ^ " >> ${paths}/${filename}
     fi
 done
-
-echo "" >> ${paths}/${filename}
-echo "===== Index Menu =====" >> ${paths}/${filename}
-echo "{{indexmenu>:serverinfo}}" >> ${paths}/${filename}
