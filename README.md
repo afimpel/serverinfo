@@ -1,2 +1,4 @@
 # serverinfo
-Server Info for DokuWiki
+Server Info (linux) for DokuWiki
+
+![ServerInfo](./serverinfo.png?raw=true "ServerInfo for Dockuwifi")
