@@ -11,8 +11,16 @@ echo "| UserName ^         $(whoami)@$(hostname) ^"  >> ${paths}/${filename}
 echo "| Datetime ^         $(date) ^" >> ${paths}/${filename}
 echo "| Uptime   ^         $(uptime) ^" >> ${paths}/${filename}
 echo "| HardWare ^         $(cat /sys/devices/virtual/dmi/id/chassis_vendor) $(cat /sys/devices/virtual/dmi/id/product_version) ( $(grep cores /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') cores ) ^" >> ${paths}/${filename}
-echo "| CPU      ^         $(grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') ^" >> ${paths}/${filename}
+echo "| CPU      ^         $(grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') ( $(grep cores /proc/cpuinfo | cut -d : -f 2 | tail -1 | sed 's/\s//') cores )^" >> ${paths}/${filename}
 echo " " >> ${paths}/${filename}
+cpunum=0
+echo "===== CPU Temp =====" >> ${paths}/${filename}
+for coretemp_str in $(cat /sys/class/thermal/thermal_zone*/temp | sed 's/\(.\)..$/.\1°C/')
+do
+    echo "| CPU${cpunum} ^        ${coretemp_str} ^ " >> ${paths}/${filename}
+    cpunum=$(( cpunum + 1 ));
+done
+
 myip=$(curl ipecho.net/plain -s)
 
 echo "===== Memory =====" >> ${paths}/${filename}
