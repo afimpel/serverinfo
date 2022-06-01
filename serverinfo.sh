@@ -3,8 +3,10 @@ paths="/www/dokuwiki/data/pages"
 filename="start.txt"
 
 echo "~~NOCACHE~~" > ${paths}/${filename} 
-echo "===== Server Info =====" >> ${paths}/${filename}
-echo "| SO       ^         $(grep PRETTY_NAME /etc/os-release  | cut -d '"' -f2) ^" >> ${paths}/${filename}
+echo "====== Server Info ======" >> ${paths}/${filename}
+echo "===== Resume =====" >> ${paths}/${filename}
+echo "| SO       ^         $(grep PRETTY_NAME /etc/os-release  | cut -d '"' -f 2) ^" >> ${paths}/${filename}
+echo "| Kernel   ^         $(uname -r) at $(uname -m) ^" >> ${paths}/${filename}
 echo "| UserName ^         $(whoami)@$(hostname) ^"  >> ${paths}/${filename}
 echo "| Datetime ^         $(date) ^" >> ${paths}/${filename}
 echo "| Uptime   ^         $(uptime) ^" >> ${paths}/${filename}
