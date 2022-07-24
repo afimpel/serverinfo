@@ -9,11 +9,11 @@ echo "~~NOCACHE~~" > ${paths}/${filename}
 echo "====== Server Info ======" >> ${paths}/${filename}
 echo "===== Resume =====" >> ${paths}/${filename}
 echo "| SO       ^         [[$(grep HOME_URL /etc/os-release  | cut -d '"' -f 2)|$(grep PRETTY_NAME /etc/os-release  | cut -d '"' -f 2)]] ^^^" >> ${paths}/${filename}
-echo "| Kernel   ^         $(uname -r) at $(uname -m) ^" >> ${paths}/${filename}
-echo "| UserName ^         $(whoami)@$(hostname) ^"  >> ${paths}/${filename}
-echo "| Datetime ^         $(date) ^" >> ${paths}/${filename}
-echo "| Uptime   ^         $(uptime) ^" >> ${paths}/${filename}
-echo "| HardWare ^         $(cat /sys/devices/virtual/dmi/id/chassis_vendor) $(cat /sys/devices/virtual/dmi/id/product_version) ( $(grep cores /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') cores ) ^" >> ${paths}/${filename}
+echo "| Kernel   ^         $(uname -r) at $(uname -m) ^^^" >> ${paths}/${filename}
+echo "| UserName ^         $(whoami)@$(hostname) ^^^"  >> ${paths}/${filename}
+echo "| Datetime ^         $(date) ^^^" >> ${paths}/${filename}
+echo "| Uptime   ^         $(uptime) ^^^" >> ${paths}/${filename}
+echo "| HardWare ^         $(cat /sys/devices/virtual/dmi/id/chassis_vendor) $(cat /sys/devices/virtual/dmi/id/product_version) ^^^" >> ${paths}/${filename}
 echo "| CPU      ^         $(grep model /proc/cpuinfo | cut -d : -f 2 | tail -1 | sed 's/\s//') ^     ${coresThreads}     ^" >> ${paths}/${filename}
 echo " " >> ${paths}/${filename}
 cpunum=0
