@@ -1,6 +1,9 @@
 #!/bin/sh
 paths="/www/dokuwiki/data/pages"
 filename="start.txt"
+cpuinfoCore=$(grep cores /proc/cpuinfo | uniq -c | tr -t ' ' ' ')
+IFS=" " read -a cores_array00 <<< $cpuinfoCore
+coresThreads="${cores_array00[3]} Cores     ^     ${cores_array00[0]} Threads"
 
 echo "~~NOCACHE~~" > ${paths}/${filename} 
 echo "====== Server Info ======" >> ${paths}/${filename}
@@ -11,7 +14,7 @@ echo "| UserName ^         $(whoami)@$(hostname) ^"  >> ${paths}/${filename}
 echo "| Datetime ^         $(date) ^" >> ${paths}/${filename}
 echo "| Uptime   ^         $(uptime) ^" >> ${paths}/${filename}
 echo "| HardWare ^         $(cat /sys/devices/virtual/dmi/id/chassis_vendor) $(cat /sys/devices/virtual/dmi/id/product_version) ( $(grep cores /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') cores ) ^" >> ${paths}/${filename}
-echo "| CPU      ^         $(grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//') ( $(grep cores /proc/cpuinfo | cut -d : -f 2 | tail -1 | sed 's/\s//') cores )^" >> ${paths}/${filename}
+echo "| CPU      ^         $(grep model /proc/cpuinfo | cut -d : -f 2 | tail -1 | sed 's/\s//') ^     ${coresThreads}     ^" >> ${paths}/${filename}
 echo " " >> ${paths}/${filename}
 cpunum=0
 echo "===== CPU Temp =====" >> ${paths}/${filename}
