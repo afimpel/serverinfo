@@ -8,7 +8,7 @@ coresThreads="${cores_array00[3]} Cores     ^     ${cores_array00[0]} Threads"
 echo "~~NOCACHE~~" > ${paths}/${filename} 
 echo "====== Server Info ======" >> ${paths}/${filename}
 echo "===== Resume =====" >> ${paths}/${filename}
-echo "| SO       ^         $(grep PRETTY_NAME /etc/os-release  | cut -d '"' -f 2) ^" >> ${paths}/${filename}
+echo "| SO       ^         [[$(grep HOME_URL /etc/os-release  | cut -d '"' -f 2)|$(grep PRETTY_NAME /etc/os-release  | cut -d '"' -f 2)]] ^^^" >> ${paths}/${filename}
 echo "| Kernel   ^         $(uname -r) at $(uname -m) ^" >> ${paths}/${filename}
 echo "| UserName ^         $(whoami)@$(hostname) ^"  >> ${paths}/${filename}
 echo "| Datetime ^         $(date) ^" >> ${paths}/${filename}
